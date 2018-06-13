@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			
+			body{
+				margin: 0;
+				/*background-color: red;*/
+			}
+			
+			/*@media only screen and (min-width:750px ) {
+				body{
+					background-color: green;
+				}
+			}
+			
+			
+			@media only screen and (min-width:1024px ) {
+				body{
+					background-color: blue;
+				}
+			}*/
+			
+			.w{
+				width: 1024px;
+				margin: 0px auto;
+			}
+			
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+			
+			.clear:after{
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			header{
+				margin-bottom: 20px;
+			}
+		
+			header>div{
+				width: 49%;
+				height: 50px;
+				background-color: red;	
+			}
+			
+			nav{
+				height: 150px;
+				background-color: green;
+				margin-bottom: 20px;
+			}
+			
+			article{
+				margin-bottom: 20px;
+			}
+			article section{
+				height: 230px;
+				background-color: blue;
+				width: 30%;
+				float: left;
+				margin-right: 5%;
+			}
+			
+			article section:last-child{
+				margin-right: 0;
+			}
+			
+			footer{}
+			footer .item{
+				width:22%;
+				height: 80px;
+				float: left;
+				background-color: orangered;
+				margin-right: 4%;
+			}
+			
+			footer .item:last-child{
+				margin-right: 0;
+			}
+			
+			@media only screen and (max-width:1024px ) {
+				
+				body{
+					/*background-color: green;*/
+				}
+				
+				.w{
+					width: 100%;
+				}
+				
+				header>div{
+					width: 100%;
+					margin-right: 0;
+					margin-bottom: 10px;
+				}
+				
+				nav{
+					height: 100px;
+				}
+				article section{
+					width: 100%;
+					margin-right: 0;
+					height: 150px;
+					margin-bottom: 10px;
+				}
+				
+				footer .item{
+					width: 49%;
+					margin-right: 0;
+					margin-bottom: 10px;
+				}
+				footer .item:nth-child(2n){
+					width: ;
+					float: right;
+				}
+				footer .item:nth-child(2n+1){
+					float: left;
+				}
+			}
+			
+			
+			@media only screen and (max-width:768px ) {
+				
+				body{
+					/*background-color: blue;*/
+				}
+				
+				footer .item{
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="w">
+			<header class="clear">
+				<div class="left"></div>
+				<div class="right"></div>
+			</header>
+			<nav></nav>
+			
+			<article class="clear">
+				<section></section>
+				<section></section>
+				<section></section>
+			</article>
+			
+			<footer class="clear">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</footer>
+		</div>
+		
+	</body>
+</html>
