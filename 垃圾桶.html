@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.content {
+				width: 600px;
+				margin: 20px auto;
+				padding: 40px;
+			}
+			
+			.up {
+				border: solid 1px #333;
+				padding: 20px;
+			}
+			
+			.up:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.tong {
+				float: left;
+				width: 160px;
+				height: 160px;
+				background-image: url(img/trash1.png);
+				background-size: cover;
+			}
+			
+			.down {
+				margin-top: 24px;
+				margin-bottom: 16px;
+			}
+			.down p{
+				margin-bottom: 12px;
+			}
+			
+			.right {
+				float: right;
+			}
+			
+			.right p {
+				width: 300px;
+				padding: 10px;
+				background-color: #ddd;
+				margin: 10px;
+				text-align: center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="content">
+			<div class="up">
+				<div class="tong"></div>
+				<div class="right">
+					<p draggable="true">《文章1》</p>
+					<p draggable="true">《文章2》</p>
+					<p draggable="true">《文章3》</p>
+				</div>
+			</div>
+			<div class="down">
+				<p>已经删除的文章列表：</p>
+				<ul></ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var p = document.querySelectorAll(".right p");
+			var tong = document.querySelector(".tong");
+			var list = document.querySelector(".down ul");
+			var temp = null;
+			for(var i = 0; i < p.length; i++) {
+				p[i].ondragstart = function() {
+					temp = this;
+				}
+				p[i].ondragend = function() {
+					temp = null;
+				}
+				tong.ondragover = function(e) {
+					e.preventDefault();
+				}
+				tong.ondrop = function() {
+					tong.appendChild(temp);
+					tong.style.backgroundImage = "url(img/trash2.jpg)";
+					var newLi = document.createElement("li");
+					newLi.innerText = temp.innerText;
+					list.appendChild(newLi);
+					tong.innerHTML=null;
+				}
+			}
+						
+		</script>
+
+	</body>
+
+</html>
