@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas{
+				width: 400px;height: 400px;border: solid 1px red;
+			}
+			p{font-size: 24px;font-family: arial;margin-left: 150px;}
+			
+			
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<p><span>00</span>:<span>00</span>:<span>00</span></p>
+		<script type="text/javascript">
+			var canvas=document.querySelector("#canvas");
+			var ctx=canvas.getContext("2d");
+			var word=document.querySelectorAll("p span");
+			
+			ctx.translate(400,400);
+			//绘制表盘
+			function drawClock(){
+			ctx.beginPath();
+			ctx.arc(0,0,380,0,Math.PI*2,false);
+			ctx.lineWidth=10;
+			ctx.strokeStyle="#ccc";
+			ctx.stroke();
+			ctx.closePath();		
+
+			//刻度
+			for (var i=0;i<60;i++) {
+				var x=356*Math.cos(i*6/180*Math.PI);
+				var y=356*Math.sin(i*6/180*Math.PI);
+				ctx.beginPath();				
+				if(i%5==0){
+					ctx.arc(x,y,8,0,Math.PI*2,false);
+					ctx.fillStyle="darkblue";
+					ctx.fill();
+				}else{
+					ctx.arc(x,y,5,0,Math.PI*2,false);
+					ctx.fillStyle="gray";
+					ctx.fill();
+				}
+				ctx.closePath();			
+			}}
+			
+			
+			//绘制时针、分针、秒针
+			function setTime(s,m,h){			
+				ctx.lineCap="round";
+				//秒针
+				ctx.save();
+				ctx.rotate(s*6/180*Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0,52);
+				ctx.lineTo(0,-300);
+				ctx.lineWidth=6;
+				ctx.strokeStyle="#FF0000";
+				ctx.stroke();
+				ctx.restore();
+				
+				//分针
+				ctx.save();
+				ctx.rotate((m*6+s/60*6)/180*Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0,40);
+				ctx.lineTo(0,-260);
+				ctx.lineWidth=12;
+				ctx.strokeStyle="green";
+				ctx.stroke();
+				ctx.restore();
+				
+				//时针
+				ctx.save();
+				ctx.rotate((h*30+m/60*30)/180*Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0,32);
+				ctx.lineTo(0,-180);
+				ctx.lineWidth=20;
+				ctx.strokeStyle="blue";
+				ctx.stroke();
+				ctx.restore();
+				
+				ctx.beginPath();
+				ctx.arc(0,0,26,0,Math.PI*2,false);
+				ctx.fillStyle="black";
+				ctx.fill();
+				ctx.closePath();
+				
+			}							
+			var t=setInterval(function(){
+				var now=new Date();
+				var h=now.getHours();
+				var m=now.getMinutes();
+				var s=now.getSeconds();
+				ctx.clearRect(-400,-400,800,800);
+				drawClock();
+				setTime(s,m,h);
+				word[0].innerText=h<10?"0"+h:h;
+				word[1].innerText=m<10?"0"+m:m;
+				word[2].innerText=s<10?"0"+s:s;
+	
+			},1000)
+			
+		</script>
+		
+		
+		
+	</body>
+</html>
