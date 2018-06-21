@@ -5,4 +5,7 @@
 2） https://yutagu133.github.io/homework/作业—响应式布局/index.html
 3） https://yutagu133.github.io/homework/播放器.html
 第二次作业：
-1）https://yutagu133.github.io/homework/播放器.html
+1）https://yutagu133.github.io/homework/时钟绘制.html
+2）https://yutagu133.github.io/homework/作业1.html
+3）https://yutagu133.github.io/homework/作业2.html
+4）https://yutagu133.github.io/homework/作业3.html
