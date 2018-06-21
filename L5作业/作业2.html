@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				width: 400px;
+				height: 400px;
+				border: solid 1px red;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<!--
+			1.写一个饼形图
+			2.给饼形图一个动画的绘制过程
+			3.绘制一个条形图
+			4.给条形图一个动画效果
+		-->
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext("2d");
+			var color = ["blue", "green", "red", "yellow", "purple", "darkblue", "salmon"];
+
+			ctx.translate(400, 400);
+
+			var start = 0;
+			var end = 0;
+			var sum = 0;
+			var index = 0;
+
+			var t = setInterval(function() {
+				var arr = [2, 2, 3, 4, 2, 3];
+
+				for(var i = 0; i < arr.length; i++) {
+					sum += arr[i];
+				}
+
+					end += 0.1;
+					ctx.beginPath();
+					
+					if(end <= (arr[0] / sum) * Math.PI * 2) {
+						ctx.fillStyle = color[0];
+						end=0;
+					} else if(end <= (arr[1] / sum) * Math.PI * 2 && end > (arr[0] / sum) * Math.PI * 2) {
+						ctx.fillStyle = color[1];
+						end=arr[0]/sum*Math.PI*2;
+					}else if(end <= (arr[2] / sum) * Math.PI * 2 && end > (arr[1] / sum) * Math.PI * 2) {
+						ctx.fillStyle = color[2];
+						end=arr[1]/sum*Math.PI*2;
+					}else if(end <= (arr[3] / sum) * Math.PI * 2 && end > (arr[2] / sum) * Math.PI * 2) {
+						ctx.fillStyle = color[3];
+						end=arr[2]/sum*Math.PI*2;
+					}
+
+				
+				ctx.arc(0, 0, 400, start, end, false);
+				ctx.lineTo(0, 0);
+				ctx.fill();
+				ctx.closePath();
+				start = end;
+				//					end=end+(arr[i]/sum)*Math.PI*2;
+
+			}, 100)
+
+			if(end >= Math.PI * 2) {
+				clearInterval(t);
+			}
+		</script>
+
+	</body>
+
+</html>
