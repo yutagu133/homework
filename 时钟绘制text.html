@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas {
+				width: 400px;
+				height: 400px;
+				border: solid 1px red;
+			}
+			
+			p {
+				font-size: 24px;
+				font-family: arial;
+				margin-left: 150px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var canvas = document.querySelector("#canvas");
+			var ctx = canvas.getContext("2d");
+			var word = document.querySelectorAll("p span");
+
+			ctx.translate(400, 400);
+			//绘制表盘
+			function drawClock() {
+				ctx.beginPath();
+				ctx.arc(0, 0, 380, 0, Math.PI * 2, false);
+				ctx.lineWidth = 10;
+				ctx.strokeStyle = "#ccc";
+				ctx.stroke();
+				ctx.closePath();
+
+				//刻度
+				// 1.把钟表上的点换成数字
+				// 2.在钟表上显示年月日
+				var arr = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];
+
+				for(var i = 0; i < 60; i++) {
+					var x = 350 * Math.cos(i * 6 / 180 * Math.PI);
+					var y = 350 * Math.sin(i * 6 / 180 * Math.PI);
+					ctx.save();
+					ctx.beginPath();
+					if(i % 5 == 0) {
+						ctx.fillStyle = "black";
+						ctx.font = "bold 32px arial";
+						ctx.textAlign = "center";
+						ctx.textBaseline = "middle";
+						for(var j = 0; j < 12; j++) {
+							if(i / 5 == j)
+								ctx.fillText(arr[j], x, y);
+						}
+					} else {
+						ctx.arc(x, y, 5, 0, Math.PI * 2, false);
+						ctx.fillStyle = "gray";
+						ctx.fill();
+					}
+					ctx.closePath();
+					ctx.restore();
+
+				}
+			}
+
+			//绘制时针、分针、秒针
+			function setTime(s, m, h) {
+				ctx.lineCap = "round";
+				//秒针
+				ctx.save();
+				ctx.rotate(s * 6 / 180 * Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0, 52);
+				ctx.lineTo(0, -300);
+				ctx.lineWidth = 6;
+				ctx.strokeStyle = "#FF0000";
+				ctx.stroke();
+				ctx.restore();
+
+				//分针
+				ctx.save();
+				ctx.rotate((m * 6 + s / 60 * 6) / 180 * Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0, 40);
+				ctx.lineTo(0, -260);
+				ctx.lineWidth = 12;
+				ctx.strokeStyle = "green";
+				ctx.stroke();
+				ctx.restore();
+
+				//时针
+				ctx.save();
+				ctx.rotate((h * 30 + m / 60 * 30) / 180 * Math.PI);
+				ctx.beginPath();
+				ctx.lineTo(0, 32);
+				ctx.lineTo(0, -180);
+				ctx.lineWidth = 20;
+				ctx.strokeStyle = "blue";
+				ctx.stroke();
+				ctx.restore();
+
+				ctx.beginPath();
+				ctx.arc(0, 0, 26, 0, Math.PI * 2, false);
+				ctx.fillStyle = "black";
+				ctx.fill();
+				ctx.closePath();
+
+			}
+
+			function timer() {
+				var now = new Date();
+				var h = now.getHours();
+				var m = now.getMinutes();
+				var s = now.getSeconds();
+				var y=now.getFullYear();
+				var mon=now.getMonth()+1;
+				var da=now.getDate();
+				ctx.clearRect(-400, -400, 800, 800);
+				drawClock();
+				setTime(s, m, h);
+				mon = mon < 10 ? "0" + mon : mon;
+				da = da < 10 ? "0" + da : da;
+				ctx.beginPath();
+				ctx.fillStyle = "deepskyblue";
+				ctx.font = "bold 34px arial";
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(y+"/"+mon+"/"+da, 0, 100);
+				ctx.closePath();
+			}
+			timer();
+
+			var t = setInterval(function() {
+				timer();
+			}, 1000)
+		</script>
+
+	</body>
+
+</html>
