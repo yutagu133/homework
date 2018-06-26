@@ -9,3 +9,5 @@
 2）https://yutagu133.github.io/homework/作业1.html
 3）https://yutagu133.github.io/homework/作业2.html
 4）https://yutagu133.github.io/homework/作业3.html
+第三次作业：
+https://yutagu133.github.io/homework/作业0626 2/作业-转动.html
