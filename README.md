@@ -11,4 +11,4 @@
 4）https://yutagu133.github.io/homework/作业3.html
 
 第三次作业提交：
-https://yutagu133.github.io/homework/作业0626 2/作业-转动.html
+https://yutagu133.github.io/homework/作业0626/作业-转动.html
