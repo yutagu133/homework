@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			html {
+				font-size: calc(100vw/7.5);
+			}
+			
+			body {
+				margin: 0;
+			}
+			
+			.nav {
+				width: 100%;
+				height: 0.88rem;
+				border-bottom: solid 1px #ccc;
+				background-color: #F0F0F0;
+				display: flex;
+				position: fixed;
+				z-index: 99;
+			}
+			
+			.nav .arrow-left {
+				width: 0.88rem;
+				height: 0.88rem;
+			}
+			
+			.nav .arrow-left a {
+				display: block;
+				width: 0.44rem;
+				height: 0.44rem;
+				margin: 0.22rem 0 0 0.22rem;
+			}
+			
+			.nav .arrow-left img {
+				display: block;
+				width: 0.24rem;
+				height: 0.41rem;
+				margin: 0.015rem 0 0 0.1rem;
+			}
+			
+			.nav .more {
+				width: 1.1rem;
+				height: 0.88rem;
+			}
+			
+			.nav .more a {
+				display: block;
+				width: 0.44rem;
+				height: 0.44rem;
+				margin: 0.22rem 0 0 0.33rem;
+			}
+			
+			.nav .more img {
+				display: block;
+				width: 0.36rem;
+				height: 0.36rem;
+				margin: 0.04rem 0.04rem 0 0;
+			}
+			
+			.nav .inputtext {
+				height: 0.6rem;
+				flex: 1;
+			}
+			
+			.nav .inputtext #search {
+				display: block;
+				width: 100%;
+				height: 100%;
+				margin-top: 0.12rem;
+				outline: none;
+				border: none;
+				border: solid 1px #ccc;
+				box-sizing: border-box;
+				border-radius: 0.3rem;
+				padding: 0 0.66rem;
+				background-image: url(images/serch.png);
+				background-repeat: no-repeat;
+				background-size: 0.3rem 0.3rem;
+				background-position: 0.24rem 0.14rem;
+			}
+			
+			.down {
+				width: 100%;
+				height: 100vh;
+				padding-top: 0.88rem;
+				display: flex;
+				position: fixed;
+			}
+			
+			.down .leftside {
+				width: 1.48rem;
+				height: 100%;
+				background-color: #fff;
+				border-right: solid 1px #ccc;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.down .leftside ul {
+				margin: 0;
+				padding: 0;
+				position: absolute;
+			}
+			
+			.down .leftside li {
+				width: 1.48rem;
+				height: 0.9rem;
+				border-bottom: solid 1px #ccc;
+				list-style: none;
+				text-align: center;
+				line-height: 0.9rem;
+			}
+			
+			.down .leftside li a {
+				display: block;
+				width: 1.48rem;
+				height: 0.9rem;
+				text-decoration: none;
+				font-size: 0.22rem;
+				color: #111;
+				font-family: "微软雅黑";
+			}
+			.down .leftside li a.active{
+				color: #f01b1d;
+			}
+			
+			.down .rightside {
+				padding-left: 0.14rem;
+				height: 100%;
+				flex: 1;
+				background-color:#F0F0F0;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#demonx {
+				float: left;
+				width: 5.72rem;
+				padding-top: 0.14rem;
+				position: absolute;
+			}
+			
+			#demonx .banner,
+			#demonx .banner img {
+				display: block;
+				width: 5.72rem;
+				height: 1.82rem;
+			}
+			
+			.part p {
+				font-size: 0.22rem;
+				color: #111;
+				margin-top: 0.38rem;
+				margin-bottom: 0.16rem;
+			}
+			
+			.part ol {
+				margin: 0;
+				list-style: none;
+				width: 4.52rem;
+				padding: 0.14rem 0.64rem 0 0.56rem;
+				background-color: #fff;
+			}
+			
+			.part ol:after {
+				display: block;
+				content: "";
+				clear: both;
+			}
+			
+			.part li {
+				width: 1.08rem;
+				float: left;
+				margin-right: 0.64rem;
+			}
+			
+			.part li:nth-child(3n+3) {
+				margin-right: 0;
+			}
+			
+			.part li a.imgp,
+			.part li img {
+				display: block;
+				width: 1.08rem;
+				height: 1.09rem;
+			}
+			
+			.part li a.wordp {
+				display: block;
+				width: 1.08rem;
+				font-size: 0.2rem;
+				color: #333;
+				text-decoration: none;
+				text-align: center;
+				margin: 0.24rem 0 0.2rem 0;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="nav">
+			<div class="arrow-left">
+				<a href="#"><img src="images/arrow-left.png" /></a>
+			</div>
+			<div class="inputtext">
+				<input type="text" name="search" id="search" value="" placeholder="APP下拉领红包呦，佘诗曼与您不见不散" />
+			</div>
+			<div class="more">
+				<a href="#"><img src="images/nav_more.png" /></a>
+			</div>
+		</div>
+		<div class="down">
+			<div class="leftside">
+				<ul class="list">
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="">京东超市</a>
+					</li>
+					<li>
+						<a href="">全球购</a>
+					</li>
+					<li>
+						<a href="">男装</a>
+					</li>
+					<li>
+						<a href="">女装</a>
+					</li>
+					<li>
+						<a href="">男鞋</a>
+					</li>
+					<li>
+						<a href="">女鞋</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="">京东超市</a>
+					</li>
+					<li>
+						<a href="">全球购</a>
+					</li>
+					<li>
+						<a href="">男装</a>
+					</li>
+					<li>
+						<a href="">女装</a>
+					</li>
+					<li>
+						<a href="">男鞋</a>
+					</li>
+					<li>
+						<a href="">女鞋</a>
+					</li>
+					<li>
+						<a href="#">热门推荐</a>
+					</li>
+					<li>
+						<a href="">京东超市</a>
+					</li>
+					<li>
+						<a href="">全球购</a>
+					</li>
+					<li>
+						<a href="">男装</a>
+					</li>
+					<li>
+						<a href="">女装</a>
+					</li>
+					<li>
+						<a href="">男鞋</a>
+					</li>
+					<li>
+						<a href="">女鞋</a>
+					</li>
+				</ul>
+
+			</div>
+			<div class="rightside">
+				<div id="demonx">
+					<a href="#" class="banner"><img src="images/banner.png" alt="" /></a>
+					<div class="part">
+						<p>热卖选购</p>
+						<ol>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph01.png" /></a>
+								<a href="#" class="wordp">新品T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph02.png" /></a>
+								<a href="#" class="wordp">精品衬衫</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph03.png" /></a>
+								<a href="#" class="wordp">POLO衫</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph04.png" /></a>
+								<a href="#" class="wordp">牛仔裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph05.png" /></a>
+								<a href="#" class="wordp">休闲裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph06.png" /></a>
+								<a href="#" class="wordp">短裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph07.png" /></a>
+								<a href="#" class="wordp">夹克</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph08.png" /></a>
+								<a href="#" class="wordp">西服</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph09.png" /></a>
+								<a href="#" class="wordp">自营男装</a>
+							</li>
+						</ol>
+					</div>
+					<div class="part">
+						<p>T恤</p>
+						<ol>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph10.png" /></a>
+								<a href="#" class="wordp">新款T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph11.png" /></a>
+								<a href="#" class="wordp">长袖T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph12.png" /></a>
+								<a href="#" class="wordp">短袖T恤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph13.png" /></a>
+								<a href="#" class="wordp">牛仔裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph14.png" /></a>
+								<a href="#" class="wordp">休闲裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph15.png" /></a>
+								<a href="#" class="wordp">短裤</a>
+							</li>
+						</ol>
+					</div>
+						<div class="part">
+						<p>精品男衣</p>
+						<ol>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph04.png" /></a>
+								<a href="#" class="wordp">牛仔裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph05.png" /></a>
+								<a href="#" class="wordp">休闲裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph06.png" /></a>
+								<a href="#" class="wordp">短裤</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph07.png" /></a>
+								<a href="#" class="wordp">夹克</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph08.png" /></a>
+								<a href="#" class="wordp">西服</a>
+							</li>
+							<li>
+								<a href="#" class="imgp"><img src="images/ph09.png" /></a>
+								<a href="#" class="wordp">自营男装</a>
+							</li>
+						</ol>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			var start = 0;
+			var t = 0;
+			var max = ($("ul.list").height() - $(".leftside").height() + 100) * -1;
+
+			$("ul.list").on({
+				touchstart: function(e) {
+					start = e.originalEvent.changedTouches[0].clientY;
+				},
+				touchmove: function(e) {
+					var y = e.originalEvent.changedTouches[0].clientY;
+					var temp = t + y - start;
+					temp = temp > 100 ? 100 : temp;
+					temp = temp < max ? max : temp;
+					$(this).css("top", temp + "px");
+
+				},
+				touchend: function(e) {
+					y = e.originalEvent.changedTouches[0].clientY;
+					t = t + y - start;
+					if(t > 0) {
+						t = 0;
+						$(this).animate({
+							top: t + "px"
+						}, 500);
+					} else {
+						if(t < max) {
+							t = max + 100;
+							$(this).animate({
+								top: t + "px"
+							}, 500);
+						}
+						$(this).css("top", t + "px");
+					}
+				}
+			});
+			
+			var start2=0;
+			var t2=0;
+			var max2=($("#demonx").height()-$(".rightside").height()+150)*-1;
+			$("#demonx").on({
+				touchstart:function(e){
+					start2=e.originalEvent.changedTouches[0].clientY;
+				},
+				touchmove:function(e){
+					var y2=e.originalEvent.changedTouches[0].clientY;
+					var temp2=t2+y2-start2;
+					temp2=temp2>100?100:temp2;
+					temp2=temp2<max2?max2:temp2;
+					$("#demonx").css("top",temp2+"px");
+					
+				},
+				touchend:function(e){
+					var y2=e.originalEvent.changedTouches[0].clientY;
+					t2=t2+y2-start2;
+					if(t2>0){
+						t2=0;
+						$("#demonx").animate({top:t2+"px"},300);
+					}else{
+						if(t2<max2){
+							t2=max2+150;
+							$("#demonx").animate({top:t2+"px"},500);
+						}
+						$("#demonx").css("top",t2+"px");
+					}				
+				}
+				
+				
+			})
+			
+				$(".list li a").on("click",function(e){
+					$(this).addClass("active").siblings().removeClass("active");
+					
+					
+				})
+			
+			
+		</script>
+
+	</body>
+
+</html>
